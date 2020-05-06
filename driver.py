@@ -1,5 +1,5 @@
 import pandas as pd
-import insert
+import InertionSort
 import MergeSort
 import random
 import time
@@ -46,6 +46,9 @@ for x in range(11):
     times.append(time.time() - startTime)
     #print("Array ", x + 1, ":")
     #display_list(arrays[x])
+
+# repeat procedure for Insertion Sort
+    # InertionSort.insertion_sort()
 
 #Store the array size and sort times in a pandas data frame
 df = pd.DataFrame(list(zip(n, times)), columns = ['Size', 'Sort Time'])

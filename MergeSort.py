@@ -1,4 +1,5 @@
 
+
 # Merge Sort
 def merge_sort(array):
     if len(array) > 1:
