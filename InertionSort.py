@@ -22,6 +22,6 @@ def insertion_sort(array):
 
 # Worst Case
 # This function returns the worst case scenario for the time component of an insertion sort
-# algorithm for a given array size
+# algorithm for a given array size.
 def worst_case(size):
     return ((1/2) * math.pow(size, 2)) + ((1/2) * size) - 1

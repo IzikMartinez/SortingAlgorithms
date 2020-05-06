@@ -43,7 +43,7 @@ def merge_sort(array):
             j += 1
             k += 1
 
-
+# Worst Case
 def worst_case(size):
     if size > 1:
         halfway = int(size / 2)
