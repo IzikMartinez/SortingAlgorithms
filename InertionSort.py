@@ -1,5 +1,4 @@
-Unsorted = [1, 3, 7, 2, 4, 10, 9]
-
+import math
 
 def insertion_sort(array):
     # check if i ls less than i-1
@@ -21,4 +20,8 @@ def insertion_sort(array):
             j = j-1
 
 
-print("Hello moto")
+# Worst Case
+# This function returns the worst case scenario for the time component of an insertion sort
+# algorithm for a given array size
+def worst_case(size):
+    return ((1/2) * math.pow(size, 2)) + ((1/2) * size) - 1

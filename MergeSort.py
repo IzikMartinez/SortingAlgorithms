@@ -44,4 +44,13 @@ def merge_sort(array):
             k += 1
 
 
+def worst_case(size):
+    if size > 1:
+        halfway = int(size / 2)
+        first_half = size - halfway
+        second_half = size - first_half
+        return worst_case(first_half) + worst_case(second_half) + (size - 1)
+    else:
+        return 0
+
 
