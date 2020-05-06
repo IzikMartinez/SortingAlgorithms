@@ -27,33 +27,47 @@ def make_array(size, width):
     return array
 
 #Declare arrays to hold the arrays to be sorted, their respective size, and the sort time
-arrays = []
+unsorted_arrays = []
 n = []
-times = []
+merge_times = []
+insertion_times = []
 
-#Create 11 arrays of a random size from 10 to 100
+#Create 11 arrays of a random size from 1000 to 100000
 for x in range(11):
-   # print("Array ", x+1, ":")
     n.append(random.randrange(1000,100000,1))
-    arrays.append(make_array(n[x], 100))
-    #display_list(arrays[x])
+    unsorted_arrays.append(make_array(n[x], 100))
 
-#Sort all of the arrays and save the time taken to sort
+sorted_arraysM = unsorted_arrays.copy()
+
+#Sort all of the arrays using merge sort and save the time taken to sort
 print("Merge Sort")
 for x in range(11):
     startTime = time.time()
-    MergeSort.merge_sort(arrays[x])
-    times.append(time.time() - startTime)
-    #print("Array ", x + 1, ":")
-    #display_list(arrays[x])
+    MergeSort.merge_sort(sorted_arraysM[x])
+    merge_times.append(time.time() - startTime)
 
-# repeat procedure for Insertion Sort
-    # InertionSort.insertion_sort()
+#Sort all of the arrays using insertion sort and save the time taken to sort
+print("Insertion Sort")
+for x in range(11):
+    startTime = time.time()
+    InertionSort.insertion_sort(unsorted_arrays[x])
+    insertion_times.append(time.time() - startTime)
 
-#Store the array size and sort times in a pandas data frame
-df = pd.DataFrame(list(zip(n, times)), columns = ['Size', 'Sort Time'])
-print(df)
 
-#Plot the size vs sort time
-df.plot(x = 'Size', y = 'Sort Time', kind = 'scatter')
+#Store the array size and merge sort times in a pandas data frame
+merge_df = pd.DataFrame(list(zip(n, merge_times)), columns = ['Size', 'Merge Sort Time'])
+print(merge_df)
+
+#Store the array size and insertion sort times in a pandas data frame
+insertion_df = pd.DataFrame(list(zip(n, insertion_times)), columns = ['Size', 'Insertion Sort Time'])
+print(insertion_df)
+
+#Plot the size vs merge sort time
+merge_df.plot(x = 'Size', y = 'Merge Sort Time', kind = 'scatter')
+plt.title('Merge Sort Analysis')
+plt.show()
+
+#Plot the size vs insertion sort time
+insertion_df.plot(x = 'Size', y = 'Insertion Sort Time', kind = 'scatter')
+plt.title('Insertion Sort Analysis')
 plt.show()
